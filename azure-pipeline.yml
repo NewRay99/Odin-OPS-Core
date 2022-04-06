@@ -23,12 +23,11 @@ stages:
       parameters:
         Stage: DevTest
         Environment: 'DevTest'
-        #azureSubscriptionSPN: ${{ variables.devTestAzureSubscriptionSPN }}
         azureSubscriptionSPN: $(devTestAzureSubscriptionSPN)
-        location: ${{ variables.location }}
-        parameterFile: ${{ variables.devTestParameterFile }}
-        resourcePrefix: ${{ variables.devTestResourcePrefix }}
-        TAGEnvironment: ${{ variables.devTestTAGEnvironment }}
+        location: $(location)
+        parameterFile: $(devTestParameterFile)
+        resourcePrefix: $(devTestResourcePrefix)
+        TAGEnvironment: $(devTestTAGEnvironment)
 
 
   - stage: TestRelease
@@ -37,8 +36,8 @@ stages:
       parameters:
         Stage: Test
         Environment: 'Test'
-        azureSubscriptionSPN: ${{ variables.testAzureSubscriptionSPN }}
-        location: ${{ variables.location }}
-        parameterFile: ${{ variables.testParameterFile }}
-        resourcePrefix: ${{ variables.testResourcePrefix }}
-        TAGEnvironment: ${{ variables.testTAGEnvironment }}
+        azureSubscriptionSPN: $(testAzureSubscriptionSPN)
+        location: $(location)
+        parameterFile: $(testParameterFile)
+        resourcePrefix: $(testResourcePrefix)
+        TAGEnvironment: $(testTAGEnvironment)
