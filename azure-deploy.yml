@@ -36,9 +36,8 @@ jobs:
               scriptType: bash
               scriptLocation: inlineScript
               inlineScript: |
-                az group create --name '${{ parameters.resourcePrefix }}-rg-OPS-core' --location ${{ parameters.location }} --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence (CEDD)" "Product=Data Platform Infrastructure" "Environment=Dev" "Service Offering=ESFA Adopt Programme"
+                az group create --name ${{ parameters.resourcePrefix }}-rg-OPS-core --location ${{ parameters.location }} --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence (CEDD)" "Product=Data Platform Infrastructure" "Environment=Dev" "Service Offering=ESFA Adopt Programme"
                 az deployment group create  `
-                --template-file main.bicep --parameters ${{ parameters.parameterFile }} `
-                --parameters  environment=${{ parameters.TAGEnvironment }} resourcegroupname='${{ parameters.resourcePrefix }}-rg-OPS-core' objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} `
+                --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters  environment=${{ parameters.TAGEnvironment }} resourcegroupname='${{ parameters.resourcePrefix }}-rg-OPS-core' objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} `
                 --resource-group '${{ parameters.resourcePrefix }}-rg-OPS-core'
 
