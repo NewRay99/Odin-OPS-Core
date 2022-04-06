@@ -3,7 +3,7 @@ param tenantId string
 param objectId string
 param resourcegroupname string
 param location string
-param environment string
+param TAGEnvironment string
 param keyVaultName string
 param keyVaultSKU string
 param softDeleteRetentionInDays int
@@ -13,7 +13,7 @@ param enabledForDiskEncryption bool
 param enableRbacAuthorization bool 
 
 var tags = {
-  Environment: environment
+  Environment: TAGEnvironment
   Portfolio: 'Education and Skills Funding Agency'
   'Service Line': 'Data Operations'
   Service: 'Business Intelligence'
