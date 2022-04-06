@@ -10,6 +10,18 @@
       },
       "softDeleteRetentionInDays": {
         "value": 90
+      },
+      "enabledForDeployment": {
+        "value": true
+      },
+      "enabledForTemplateDeployment": {
+        "value": true
+      },
+      "enabledForDiskEncryption": {
+        "value": true
+      },
+      "enableRbacAuthorization": {
+        "value": false
       }
     }
 }

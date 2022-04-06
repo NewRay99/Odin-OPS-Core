@@ -1,35 +1,25 @@
 //Global Parameters
-//param resourcePrefix string
+param tenantId string
+param objectId string
 param resourcegroupname string
 param location string
 param environment string
-//param corerg string = 's161d01-core'
-//param corevnet string = 's161d01-core-vn-01'
 param keyVaultName string
 param keyVaultSKU string
 param softDeleteRetentionInDays int
+param enabledForDeployment bool 
+param enabledForTemplateDeployment bool
+param enabledForDiskEncryption bool
+param enableRbacAuthorization bool 
 
-//Action Group
-//var actionGroupName = '${resourcePrefix}-ag-mgr'
-//param actionGroupEmail string 
-
-//module actiongp 'Modules/actionGroup.bicep' = {
-//  scope: resourceGroup('${resourcegroupname}')
-//  name: 'actiongp'
-//  params: {
-//    actionGroupName: actionGroupName
-//    actionGroupEmail: actionGroupEmail
-//    environment: environment
-// }
-//}
-
-//Key Vault - MOVE TO PARAM FILE
-param tenantId string
-param objectId string
-param enabledForDeployment bool = true
-param enabledForTemplateDeployment bool = true
-param enabledForDiskEncryption bool = true
-param enableRbacAuthorization bool = false
+var tags = {
+  Environment: environment
+  Portfolio: 'Education and Skills Funding Agency'
+  'Service Line': 'Data Operations'
+  Service: 'Business Intelligence'
+  Product: 'ESFA Adopt Programme'
+  'Service Offering': 'ESFA Adopt Programme'
+}
 
 param networkAcls object = {
   ipRules: []
@@ -98,20 +88,7 @@ module kv 'Modules/keyvault.bicep' = {
     sku: keyVaultSKU
     tenant: tenant
     accessPolicies: accessPolicies
-    environment: environment
+    tags: tags
  }
 }
 
-//resource corevnetid 'Microsoft.Network/virtualNetworks@2020-07-01' existing = {
-//  name: corevnet
-//  scope: resourceGroup(corerg)
-//}
-
-//module dns 'Modules/privatednszone.bicep' = {
-//  scope: resourceGroup('${resourcegroupname}')
-//  name: 'dns'
-// params: {
-//    vnetId: corevnetid.id
-   //vnetId: '/subscriptions/81703de1-ec12-47e5-91f8-ef521199196e/resourceGroups/s161d01-core/providers/Microsoft.Network/virtualNetworks/s161d01-core-vn-01'
-//  }
-//}
