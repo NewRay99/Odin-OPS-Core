@@ -1,6 +1,6 @@
 parameters:
 - name: Stage
-- name: PipelineEnvironment
+- name: Environment
 - name: azureSubscriptionSPN
 - name: location
 - name: parameterFile
@@ -10,7 +10,7 @@ parameters:
 jobs:
   - deployment: Deploy${{ parameters.Stage }}
     displayName: Deploy${{ parameters.Stage }}
-    environment: ${{ parameters.PipelineEnvironment }}
+    environment: ${{ parameters.Environment }}
     strategy:
       runOnce:
         deploy:
