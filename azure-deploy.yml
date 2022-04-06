@@ -5,8 +5,8 @@ parameters:
 variables:
   - ${{ if eq(parameters.PipelineEnvironment, 'DevTest') }}:
     - group: vg-odin-devTest-core
-  - ${{ if eq(parameters.PipelineEnvironment, 'Test') }}:
-    - group: vg-odin-test-core
+#  - ${{ if eq(parameters.PipelineEnvironment, 'Test') }}:
+#    - group: vg-odin-test-core
 
 jobs:
   - deployment: Deploy${{ parameters.Stage }}
