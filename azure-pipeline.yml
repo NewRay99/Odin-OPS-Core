@@ -23,7 +23,8 @@ stages:
       parameters:
         Stage: DevTest
         Environment: 'DevTest'
-        azureSubscriptionSPN: ${{ variables.devTestAzureSubscriptionSPN }}
+        #azureSubscriptionSPN: ${{ variables.devTestAzureSubscriptionSPN }}
+        azureSubscriptionSPN: $(devTestAzureSubscriptionSPN)
         location: ${{ variables.location }}
         parameterFile: ${{ variables.devTestParameterFile }}
         resourcePrefix: ${{ variables.devTestResourcePrefix }}
