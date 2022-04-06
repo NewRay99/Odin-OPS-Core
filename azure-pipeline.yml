@@ -10,6 +10,7 @@ parameters:
   - DevTest
   - Test
 
+
 variables:
   - group: vg-odin-core
 
@@ -26,7 +27,7 @@ stages:
         azureSubscriptionSPN: $(devTestAzureSubscriptionSPN)
         location: $(location)
         parameterFile: $(devTestParameterFile)
-        resourcePrefix: $(devTestResourcePrefix)
+        resourceGroupName: $(devTestResourceGroupName)
         TAGEnvironment: $(devTestTAGEnvironment)
 
 
@@ -39,5 +40,5 @@ stages:
         azureSubscriptionSPN: $(testAzureSubscriptionSPN)
         location: $(location)
         parameterFile: $(testParameterFile)
-        resourcePrefix: $(testResourcePrefix)
+        resourceGroupName: $(testResourceGroupName)
         TAGEnvironment: $(testTAGEnvironment)

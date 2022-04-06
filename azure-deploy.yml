@@ -4,7 +4,7 @@ parameters:
 - name: azureSubscriptionSPN
 - name: location
 - name: parameterFile
-- name: resourcePrefix
+- name: resourceGroupName
 - name: TAGEnvironment
 
 jobs:
@@ -36,8 +36,8 @@ jobs:
               scriptType: bash
               scriptLocation: inlineScript
               inlineScript: |
-                az group create --name s161d02-rg-OPS-core --location ${{ parameters.location }} --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence" "Product=ESFA Adopt Programme" "Environment=Dev" "Service Offering=ESFA Adopt Programme"
+                az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }} --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence" "Product=ESFA Adopt Programme" "Environment=Dev" "Service Offering=ESFA Adopt Programme"
                 az deployment group create  `
-                --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters  environment=${{ parameters.TAGEnvironment }} resourcegroupname='${{ parameters.resourcePrefix }}-rg-OPS-core' objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} `
-                --resource-group s161d02-rg-OPS-core
+                --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters  environment=${{ parameters.TAGEnvironment }} resourcegroupname=${{ parameters.resourceGroupName }} objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} `
+                --resource-group ${{ parameters.resourceGroupName }}
 
