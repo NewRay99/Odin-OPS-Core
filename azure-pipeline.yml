@@ -4,45 +4,40 @@ parameters:
 - name: Environment
   displayName: Environment
   type: string
-  default: 'Dev'
+  default: 'DevTest'
   values:
   - Dev
   - DevTest
   - Test
 
 variables:
-  - ${{ if eq(parameters.Environment, 'DevTest') }}:
-    - group: vg-odin-devTest-core
-  - ${{ if eq(parameters.Environment, 'Test') }}:
-    - group: vg-odin-test-core
+  - group: vg-odin-core
 
 pool:
   vmImage: ubuntu-latest
 
 stages:
   - stage: DevTestRelease
-    condition: and(always(), or(eq('${{ parameters.Environment }}', 'DevTest') , eq('${{ parameters.Environment }}', 'All')) )
     jobs:
     - template: azure-deploy.yml
       parameters:
         Stage: DevTest
         Environment: 'DevTest'
-        azureSubscriptionSPN: ${{ variables.azureSubscriptionSPN }}
+        azureSubscriptionSPN: ${{ variables.devTestAzureSubscriptionSPN }}
         location: ${{ variables.location }}
-        parameterFile: ${{ variables.parameterFile }}
-        resourcePrefix: ${{ variables.resourcePrefix }}
-        TAGEnvironment: ${{ variables.TAGEnvironment }}
+        parameterFile: ${{ variables.devTestParameterFile }}
+        resourcePrefix: ${{ variables.devTestResourcePrefix }}
+        TAGEnvironment: ${{ variables.devTestTAGEnvironment }}
 
 
   - stage: TestRelease
-    condition: and(always(), or(eq('${{ parameters.Environment }}', 'Test') , eq('${{ parameters.Environment }}', 'All')) )     
     jobs:
     - template: azure-deploy.yml
       parameters:
         Stage: Test
         Environment: 'Test'
-        azureSubscriptionSPN: ${{ variables.azureSubscriptionSPN }}
+        azureSubscriptionSPN: ${{ variables.testAzureSubscriptionSPN }}
         location: ${{ variables.location }}
-        parameterFile: ${{ variables.parameterFile }}
-        resourcePrefix: ${{ variables.resourcePrefix }}
-        TAGEnvironment: ${{ variables.TAGEnvironment }}
+        parameterFile: ${{ variables.testParameterFile }}
+        resourcePrefix: ${{ variables.testResourcePrefix }}
+        TAGEnvironment: ${{ variables.testTAGEnvironment }}
