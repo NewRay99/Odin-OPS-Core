@@ -19,7 +19,7 @@ stages:
     jobs:
     - template: azure-deploy.yml
       parameters:
-        Stage: Dev
+        Stage: DevTest
         PipelineEnvironment: 'DevTest'
 
 
