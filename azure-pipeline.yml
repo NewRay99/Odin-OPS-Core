@@ -10,6 +10,12 @@ parameters:
   - DevTest
   - Test
 
+variables:
+  - ${{ if eq(parameters.PipelineEnvironment, 'DevTest') }}:
+    - group: vg-odin-devTest-core
+  - ${{ if eq(parameters.PipelineEnvironment, 'Test') }}:
+    - group: vg-odin-test-core
+
 pool:
   vmImage: ubuntu-latest
 
@@ -21,6 +27,11 @@ stages:
       parameters:
         Stage: DevTest
         PipelineEnvironment: 'DevTest'
+        azureSubscriptionSPN: ${{ variables.azureSubscriptionSPN }}
+        location: ${{ variables.location }}
+        parameterFile: ${{ variables.parameterFile }}
+        resourcePrefix: ${{ variables.resourcePrefix }}
+        TAGEnvironment: ${{ variables.TAGEnvironment }}
 
 
   - stage: TestRelease
@@ -30,3 +41,8 @@ stages:
       parameters:
         Stage: Test
         PipelineEnvironment: 'Test'
+        azureSubscriptionSPN: ${{ variables.azureSubscriptionSPN }}
+        location: ${{ variables.location }}
+        parameterFile: ${{ variables.parameterFile }}
+        resourcePrefix: ${{ variables.resourcePrefix }}
+        TAGEnvironment: ${{ variables.TAGEnvironment }}

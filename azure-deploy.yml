@@ -1,12 +1,11 @@
 parameters:
 - name: Stage
 - name: PipelineEnvironment
-
-variables:
-  - ${{ if eq(parameters.PipelineEnvironment, 'DevTest') }}:
-    - group: vg-odin-devTest-core
-#  - ${{ if eq(parameters.PipelineEnvironment, 'Test') }}:
-#    - group: vg-odin-test-core
+- name: azureSubscriptionSPN
+- name: location
+- name: parameterFile
+- name: resourcePrefix
+- name: TAGEnvironment
 
 jobs:
   - deployment: Deploy${{ parameters.Stage }}
@@ -37,9 +36,9 @@ jobs:
               scriptType: 'pscore'
               scriptLocation: 'inlineScript'
               inlineScript: |
-                az group create --name '$(resourcePrefix)-rg-OPS-core' --location $(location) --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence (CEDD)" "Product=Data Platform Infrastructure" "Environment=Dev" "Service Offering=ESFA Adopt Programme"
+                az group create --name '${{ parameters.resourcePrefix }}-rg-OPS-core' --location ${{ parameters.location }} --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence (CEDD)" "Product=Data Platform Infrastructure" "Environment=Dev" "Service Offering=ESFA Adopt Programme"
                 az deployment group create  `
-                --template-file main.bicep --parameters $(parameterFile) `
-                --parameters  environment=$(TAGenvironment) resourcegroupname='$(resourcePrefix)-rg-OPS-core' objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=$(location) `
-                --resource-group '$(resourcePrefix)-rg-OPS-core'
+                --template-file main.bicep --parameters ${{ parameters.parameterFile }} `
+                --parameters  environment=${{ parameters.TAGEnvironment }} resourcegroupname='${{ parameters.resourcePrefix }}-rg-OPS-core' objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} `
+                --resource-group '${{ parameters.resourcePrefix }}-rg-OPS-core'
 
