@@ -19,7 +19,7 @@ jobs:
           - task: AzurePowerShell@5
             name: GetSPNObjectId 
             inputs:
-              azureSubscription: $(azureSubscriptionSPN)
+              azureSubscription: ${{ parameters.azureSubscriptionSPN }}
               scriptType: 'InlineScript'
               inline: |
                 $Context = Get-AzContext
@@ -32,7 +32,7 @@ jobs:
           - task: AzureCLI@2
             displayName: 'deploy bicep template'
             inputs:
-              azureSubscription: $(azureSubscriptionSPN)
+              azureSubscription: ${{ parameters.azureSubscriptionSPN }}
               scriptType: bash
               scriptLocation: inlineScript
               inlineScript: |
