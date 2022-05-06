@@ -53,8 +53,12 @@ jobs:
                 Write-Output "This is the Workspace tree"
                 tree "$(Pipeline.Workspace)" /F
             displayName: 'Show treeview Pipeline_Workspace'
+          ###################################
+          # Load KeyVault Values
+          ###################################
           - template: azure-update-kv.yml
             parameters: 
               Environment: ${{ parameters.Environment }}
               kvName: '$(AZURECLI_KVNAME)'
               azureSubscriptionSPN: ${{ parameters.azureSubscriptionSPN }}
+              overwrite: 1
