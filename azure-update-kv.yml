@@ -1,7 +1,8 @@
 parameters:
-    Environment: ''
-    kvName: ''
-    overwrite: 1
+  Environment: ''
+  kvName: ''
+  overwrite: 1
+  azureSubscriptionSPN: ''
 
 steps:
 - task: AzurePowerShell@5
