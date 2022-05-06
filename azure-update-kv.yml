@@ -25,7 +25,7 @@ steps:
           $kvScrtName = $p
           $kvType = $jsonparsed.$p.type
           $kvScrtV = $jsonparsed.$p.Env.${{ parameters.Environment }}
-          if ($kvType -eq password)
+          if ($kvType -eq 'password')
           {
             $secretvalue = ConvertTo-SecureString $kvScrtV -AsPlainText -Force
           }
