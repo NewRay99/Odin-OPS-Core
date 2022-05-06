@@ -13,7 +13,7 @@ steps:
     azurePowerShellVersion: latestVersion
     inline: |
       
-      $json = Get-Content -Raw $(Pipeline.Workspace)/DatabricksBuild/kv.json;
+      $json = Get-Content -Raw $(Build.Repository.LocalPath)/kv.json;
 
       $jsonparsed = convertFrom-Json $json -ErrorAction Stop;
 
