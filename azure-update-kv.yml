@@ -25,14 +25,14 @@ steps:
           $kvScrtName = $p
           $kvType = $jsonparsed.$p.type
           $kvScrtV = $jsonparsed.$p.Env.${{ parameters.Environment }}
-          if (kvType -eq password)
+          if ($kvType -eq password)
           {
             $secretvalue = ConvertTo-SecureString $kvScrtV -AsPlainText -Force
           }
           else{
             $secretvalue = $kvScrtV
           }
-          if (${{ parameters.Environment }} -eq 1)
+          if (${{ parameters.overwrite }} -eq 1)
           {
             $secret = Set-AzKeyVaultSecret -VaultName ${{ parameters.kvName }} -ContentType $kvType -Name $kvScrtName -SecretValue $secretValue
           }
