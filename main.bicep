@@ -7,10 +7,10 @@ param TAGEnvironment string
 param keyVaultName string
 param keyVaultSKU string
 param softDeleteRetentionInDays int
-param enabledForDeployment bool 
+param enabledForDeployment bool
 param enabledForTemplateDeployment bool
 param enabledForDiskEncryption bool
-param enableRbacAuthorization bool 
+param enableRbacAuthorization bool
 
 var tags = {
   Environment: TAGEnvironment
@@ -26,11 +26,11 @@ param networkAcls object = {
   virtualNetworkRules: []
 }
 
-param tenant string = tenantId 
+param tenant string = tenantId
 param accessPolicies array = [
   {
     tenantId: tenant
-    objectId: objectId 
+    objectId: objectId
     permissions: {
       keys: [
         'Get'
@@ -89,6 +89,7 @@ module kv 'Modules/keyvault.bicep' = {
     tenant: tenant
     accessPolicies: accessPolicies
     tags: tags
- }
+  }
 }
 
+output keyVaultName string = keyVaultName

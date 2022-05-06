@@ -1,0 +1,37 @@
+parameters:
+    Environment: ''
+    kvName: ''
+    overwrite: 1
+
+steps:
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: ${{ parameters.azureSubscriptionSPN }}
+    ScriptType: inlineScript
+    azurePowerShellVersion: latestVersion
+    inline: |
+      
+      $json = Get-Content -Raw $(Pipeline.Workspace)/DatabricksBuild/kv.json;
+
+      $jsonparsed = convertFrom-Json $json -ErrorAction Stop;
+
+      ForEach ($p in $jsonparsed.psobject.properties.name) {
+          Write-Host '***********'
+          Write-Host 'key' $p
+          Write-Host 'type' $jsonparsed.$p.type
+          Write-Host 'sv' $jsonparsed.$p.Env.${{ parameters.Environment }}
+          $kvScrtName = $p
+          $kvType = $jsonparsed.$p.type
+          $kvScrtV = $jsonparsed.$p.Env.${{ parameters.Environment }}
+          if (kvType -eq password)
+          {
+            $secretvalue = ConvertTo-SecureString $kvScrtV -AsPlainText -Force
+          }
+          else{
+            $secretvalue = $kvScrtV
+          }
+          if (${{ parameters.Environment }} -eq 1)
+          {
+            $secret = Set-AzKeyVaultSecret -VaultName ${{ parameters.kvName }} -ContentType $kvType -Name $kvScrtName -SecretValue $secretValue
+          }
+      }

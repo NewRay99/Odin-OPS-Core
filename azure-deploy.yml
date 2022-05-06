@@ -37,4 +37,8 @@ jobs:
               scriptLocation: inlineScript
               inlineScript: |
                 az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }} --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence" "Product=ESFA Adopt Programme" "Environment=${{ parameters.TAGEnvironment }}" "Service Offering=ESFA Adopt Programme"
-                az deployment group create --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters TAGEnvironment=${{ parameters.TAGEnvironment }} resourcegroupname=${{ parameters.resourceGroupName }} objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} --resource-group ${{ parameters.resourceGroupName }}
+                az deployment group create --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters TAGEnvironment=${{ parameters.TAGEnvironment }} resourcegroupname=${{ parameters.resourceGroupName }} objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} --resource-group ${{ parameters.resourceGroupName }} -OutVariable out
+          - template: azure-update-kv.yml
+             parameters: 
+              Environment: ${{ parametersEnvironment }}
+              kvName: ${{ out.keyVaultName }}
