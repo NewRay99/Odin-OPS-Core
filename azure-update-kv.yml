@@ -5,6 +5,7 @@ parameters:
 
 steps:
 - task: AzurePowerShell@5
+  displayName: "Populate KeyVault"
   inputs:
     azureSubscription: ${{ parameters.azureSubscriptionSPN }}
     ScriptType: inlineScript
