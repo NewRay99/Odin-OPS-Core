@@ -40,5 +40,5 @@ jobs:
                 az deployment group create --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters TAGEnvironment=${{ parameters.TAGEnvironment }} resourcegroupname=${{ parameters.resourceGroupName }} objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} --resource-group ${{ parameters.resourceGroupName }} -OutVariable out
           - template: azure-update-kv.yml
              parameters: 
-              Environment: ${{ parametersEnvironment }}
+              Environment: ${{ parameters.Environment }}
               #kvName: ${{ out.keyVaultName }}
