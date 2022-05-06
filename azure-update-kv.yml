@@ -19,6 +19,7 @@ steps:
 
       ForEach ($p in $jsonparsed.psobject.properties.name) {
           Write-Host '***********'
+          Write-Host 'keyVaultName' ${{ parameters.kvName }}
           Write-Host 'key' $p
           Write-Host 'type' $jsonparsed.$p.type
           Write-Host 'sv' $jsonparsed.$p.Env.${{ parameters.Environment }}
