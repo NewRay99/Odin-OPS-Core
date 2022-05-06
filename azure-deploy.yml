@@ -43,3 +43,4 @@ jobs:
             parameters: 
               Environment: ${{ parameters.Environment }}
               kvName: $(keyVaultName)
+              azureSubscriptionSPN: ${{ parameters.azureSubscriptionSPN }}
