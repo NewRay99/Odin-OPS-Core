@@ -37,7 +37,7 @@ jobs:
               scriptLocation: inlineScript
               inlineScript: |
                 az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }} --tags "Portfolio=Education and Skills Funding Agency" "Service Line=Data Science (CEDD)" "Service=Business Intelligence" "Product=ESFA Adopt Programme" "Environment=${{ parameters.TAGEnvironment }}" "Service Offering=ESFA Adopt Programme"
-                $outputvalue = (az deployment group create --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters TAGEnvironment=${{ parameters.TAGEnvironment }} resourcegroupname=${{ parameters.resourceGroupName }} objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} --resource-group ${{ parameters.resourceGroupName }} --query 'properties.outputs.keyVaultName.value')
+                $outputvalue = (az deployment group create --template-file main.bicep --parameters ${{ parameters.parameterFile }} --parameters TAGEnvironment=${{ parameters.TAGEnvironment }} resourcegroupname=${{ parameters.resourceGroupName }} objectId=$(GetSPNObjectId.SPNObjectId) tenantId=$(GetSPNObjectId.tenantId) location=${{ parameters.location }} --resource-group ${{ parameters.resourceGroupName }} --query 'properties.outputs.keyVaultName.value' -o tsv)
                 echo "##vso[task.setvariable variable=$keyVaultName;isOutput=true]$outputvalue"
           - template: azure-update-kv.yml
             parameters: 
