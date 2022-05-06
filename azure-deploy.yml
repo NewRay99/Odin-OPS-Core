@@ -56,5 +56,5 @@ jobs:
           - template: azure-update-kv.yml
             parameters: 
               Environment: ${{ parameters.Environment }}
-              kvName: '$(kvName)'
+              kvName: '$(AZURECLI_KVNAME)'
               azureSubscriptionSPN: ${{ parameters.azureSubscriptionSPN }}
