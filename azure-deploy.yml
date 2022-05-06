@@ -41,4 +41,4 @@ jobs:
           - template: azure-update-kv.yml
              parameters: 
               Environment: ${{ parametersEnvironment }}
-              kvName: ${{ out.keyVaultName }}
+              #kvName: ${{ out.keyVaultName }}
