@@ -1,8 +1,12 @@
 parameters:
-  Environment: ''
-  kvName: ''
-  overwrite: 1
-  azureSubscriptionSPN: ''
+  - name: Environment
+    value: ''
+  - name: kvName
+    value : '1234'
+  - name: overwrite
+    value: 1
+  - name: azureSubscriptionSPN
+    value: ''
 
 steps:
 - task: AzurePowerShell@5
