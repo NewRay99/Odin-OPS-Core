@@ -19,6 +19,28 @@
     "prod": "yyy"
 }
 },
+
+"scrt-databricks-ds-url":{
+    "type": "DatabricksUrl"
+,
+"Env":{
+    "dev":"https://adb-8147106749378490.10.azuredatabricks.net",
+    "devtest":"https://adb-8162963627389986.6.azuredatabricks.net",
+    "test": "xxx",
+    "prod": "yyy"
+}
+},
+"scrt-databricks-ds-token":{
+    "type": "DatabricksUrl"
+,
+"Env":{
+    "dev":"dapi8841503878c4c77973963ddec587dca4-2",
+    "devtest":"dapi31bd9338a71033d0393f193537f76513-2",
+    "test": "xxx",
+    "prod": "yyy"
+}
+},
+
 "scrt-datalake-auth-endpoint":{
     "type": "Endpoint"
 ,
