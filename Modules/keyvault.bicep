@@ -30,7 +30,7 @@ resource keyvault 'Microsoft.KeyVault/vaults@2019-09-01' = {
     networkAcls: networkAcls
   }
 }
-
+/*
 param AZGroupAccessGroup string = 's161-ESFADataScience-Managers USR'
 resource AZRoleDefinition 'Microsoft.Authorization/roleDefinitions@2018-01-01-preview' existing = {
   name: AZGroupAccessGroup
@@ -49,3 +49,4 @@ resource kVRoleAssign 'Microsoft.Authorization/roleAssignments@2020-04-01-previe
     AZRoleDefinition
   ]
 }
+*/
