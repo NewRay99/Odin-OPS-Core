@@ -9,7 +9,46 @@
         "prod": "datalake"
     }
 },
-
+"scrt-sql-hivedb-password":{
+    "type": "Password"
+,
+"Env":{
+    "dev":"fuzzyb34rDFEds",
+    "devtest":"fuzzyb34rDFEds",
+    "test": "xxx",
+    "prod": "yyy"
+}
+},
+"scrt-datalake-auth-endpoint":{
+    "type": "Endpoint"
+,
+"Env":{
+    "dev":"",
+    "devtest":"",
+    "test": "xxx",
+    "prod": "yyy"
+}
+},
+"scrt-sql-hivedb-jdb-connectionurl":{
+    "type": "ConnectionUrl"
+,
+"Env":{
+    "dev":"jdbc:sqlserver://s161d01-sql-odp.database.windows.net:1433:database=hivemetastoredb",
+    "devtest":"jdbc:sqlserver://s161d02-sql-odp.database.windows.net:1433:database=hivemetastoredb",
+    "test": "xxx",
+    "prod": "yyy"
+}
+},
+"scrt-sql-hivedb-username":{
+    "type": "Username"
+,
+"Env":{
+    "dev":"sqladmin",
+    "devtest":"sqladmin",
+    "test": "xxx",
+    "prod": "yyy"
+}
+},
     "scrt-spn-DataImporter-Id":{
         "type": "storageAccountSPNAccountId"
     ,
