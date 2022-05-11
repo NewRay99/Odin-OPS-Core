@@ -31,7 +31,7 @@
 }
 },
 "scrt-databricks-ds-token":{
-    "type": "DatabricksUrl"
+    "type": "Databrickstoken"
 ,
 "Env":{
     "dev":"dapi8841503878c4c77973963ddec587dca4-2",
@@ -45,9 +45,9 @@
     "type": "Endpoint"
 ,
 "Env":{
-    "dev":"",
-    "devtest":"",
-    "test": "xxx",
+    "dev":"https://login.microsoftonline.com/9c7d9dd3-840c-4b3f-818e-552865082e16/oauth2/token",
+    "devtest":"https://login.microsoftonline.com/9c7d9dd3-840c-4b3f-818e-552865082e16/oauth2/token",
+    "test": "https://login.microsoftonline.com/9c7d9dd3-840c-4b3f-818e-552865082e16/oauth2/token",
     "prod": "yyy"
 }
 },
@@ -110,7 +110,7 @@
     "Env":{
         "dev":"9c7d9dd3-840c-4b3f-818e-552865082e16",
         "devtest":"9c7d9dd3-840c-4b3f-818e-552865082e16",
-        "test": "xxx",
+        "test": "9c7d9dd3-840c-4b3f-818e-552865082e16",
         "prod": "yyy"
     }
 },
