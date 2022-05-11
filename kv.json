@@ -120,7 +120,7 @@
     ,
     "Env":{
         "dev":"https://s161d01-core-kv-01.vault.azure.net:443/keys/KeyEncryptionKey/6a7af75a112f404d868675f5d4a5c329",
-        "devtest":"https://s161d02-core-kv-01.vault.azure.net:443/keys/KeyEncryptionKey/29c53071d11c4678ba86ef201e6ce3fc",
+        "devtest":"https://s161d02-kv-ops.vault.azure.net/keys/KeyEncryptionKey/580df7cdf86b4abf8ab2fa83bbf2ef9a",
         "test": "xxx",
         "prod": "yyy"
     }
