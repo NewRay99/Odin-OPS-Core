@@ -55,8 +55,8 @@
     "type": "ConnectionUrl"
 ,
 "Env":{
-    "dev":"jdbc:sqlserver://s161d01-sql-odp.database.windows.net:1433:database=hivemetastoredb",
-    "devtest":"jdbc:sqlserver://s161d02-sql-odp.database.windows.net:1433:database=hivemetastoredb",
+    "dev":"jdbc:sqlserver://s161d01-sql-odp.database.windows.net:1433;database=hivemetastoredb",
+    "devtest":"jdbc:sqlserver://s161d02-sql-odp.database.windows.net:1433;database=hivemetastoredb",
     "test": "xxx",
     "prod": "yyy"
 }
