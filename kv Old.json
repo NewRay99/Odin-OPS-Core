@@ -56,7 +56,7 @@
 ,
 "Env":{
     "dev":"jdbc:sqlserver://s161d01-sql-odp.database.windows.net:1433;database=hivemetastoredb",
-    "devtest":"jdbc:sqlserver://s161d03-sql-odp.database.windows.net:1433;database=hivemetastoredb",
+    "devtest":"jdbc:sqlserver://s161d02-sql-odp.database.windows.net:1433;database=hivemetastoredb",
     "test": "xxx",
     "prod": "yyy"
 }
@@ -98,7 +98,7 @@
     ,
     "Env":{
         "dev":"s161d01adlsodp",
-        "devtest":"s161d03adlsodp",
+        "devtest":"s161d02adlsodp",
         "test": "s161t01adlsodp",
         "prod": "yyy"
     }
@@ -120,7 +120,7 @@
     ,
     "Env":{
         "dev":"https://s161d01-core-kv-01.vault.azure.net:443/keys/KeyEncryptionKey/6a7af75a112f404d868675f5d4a5c329",
-        "devtest":"https://s161d03-kv-ops.vault.azure.net/keys/KeyEncryptionKey/580df7cdf86b4abf8ab2fa83bbf2ef9a",
+        "devtest":"https://s161d02-kv-ops.vault.azure.net/keys/KeyEncryptionKey/580df7cdf86b4abf8ab2fa83bbf2ef9a",
         "test": "xxx",
         "prod": "yyy"
     }
@@ -131,7 +131,7 @@
     ,
     "Env":{
         "dev":"s161d01-sql-odp.database.windows.net",
-        "devtest":"s161d03-sql-odp.database.windows.net",
+        "devtest":"s161d02-sql-odp.database.windows.net",
         "test": "s161t01-sql-odp.database.windows.net",
         "prod": "yyy"
     }

@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "keyVaultName": {
-        "value": "s161d02-kv-OPS"
+        "value": "s161d03-kv-OPS"
       },
       "keyVaultSKU": {
         "value": "Standard"

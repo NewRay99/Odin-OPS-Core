@@ -42,3 +42,5 @@ stages:
         parameterFile: $(testParameterFile)
         resourceGroupName: $(testResourceGroupName)
         TAGEnvironment: $(testTAGEnvironment)
+
+ 
