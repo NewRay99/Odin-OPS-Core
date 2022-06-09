@@ -19,7 +19,16 @@
     "prod": "yyy"
 }
 },
-
+"ODPSqlAdminPass":{
+    "type": "Password"
+,
+"Env":{
+    "dev":"fuzzyb34rDFEds",
+    "devtest":"fuzzyb34rDFEds",
+    "test": "xxx",
+    "prod": "yyy"
+}
+},
 "scrt-databricks-ds-url":{
     "type": "DatabricksUrl"
 ,
@@ -70,6 +79,15 @@
     "test": "xxx",
     "prod": "yyy"
 }
+},
+"ODPSqlAdminName":{
+    "type": "Username"
+,
+"Env":{
+    "dev":"sqladmin",
+    "devtest":"sqladmin",
+    "test": "xxx",
+    "prod": "yyy"
 },
     "scrt-spn-DataImporter-Id":{
         "type": "storageAccountSPNAccountId"
